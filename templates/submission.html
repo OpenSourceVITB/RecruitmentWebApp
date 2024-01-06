@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission</title>
+    <style>
+    body {
+    background-color: #222;
+    font-family: 'Courier New', monospace;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.terminal {
+    background-color: #444;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    width: 700px;
+    height: 250px; /* Setting a height for the terminal */
+    overflow-y: auto; /* Enabling scrolling if content exceeds height */
+}
+
+
+h1, h3 {
+    overflow: hidden;
+    border-right: .15em solid #fff;
+    white-space: nowrap;
+    margin: 0;
+    display: inline;
+    font-size: 1.2rem; /* Slightly smaller font size */
+}
+@media (max-width: 768px) {
+    .terminal {
+        margin-top: -250px;
+        width: 95%; /* Make the terminal take full width on smaller screens */
+        max-width: 400px;
+        height: 100px; /* Let the height adjust based on content */
+    }
+    h1, h3{
+        font-size: 0.75rem;
+    }
+}
+</style>
+</head>
+<body>
+
+    <div class="terminal">
+        <h1 id="submissionHeader">[Open-Source@Club ~]$ <br></h1> <br><br>
+        <h3 id="submissionMessage"></h3>
+    </div>
+
+    <script>
+        function typeWriter(element, text, speed) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        const h1Element = document.getElementById('submissionHeader');
+        const h3Element = document.getElementById('submissionMessage');
+
+        typeWriter(h1Element, 'Submission confirmed', 100);
+        setTimeout(function() {
+            h3Element.innerHTML = '[Open-Source@Club ~]$ <br>';
+            typeWriter(h3Element, 'Thank you for submitting the form', 50);
+        }, 2500);
+    </script>
+</body>
+</html>
