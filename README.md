@@ -17,7 +17,7 @@ To explore the functionality and contribute to the development of this web app, 
 
 1. Installation: Clone this repository and install the required dependencies using pip install -r requirements.txt.
 2. Run the App: Execute flask --app main run to launch the web app locally.
-3. Contribution: Check out our [Contribution Guidelines](https://github.com/OpenSourceVITB/.github/CONTRIBUTING.md) if you're interested in contributing to the project.
+3. Contribution: Check out our [Contribution Guidelines](./CONTRIBUTING.md) if you're interested in contributing to the project.
 
 ## Community Guidelines
 
