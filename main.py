@@ -8,7 +8,7 @@
 
 
 from flask import Flask, render_template, request, redirect, url_for, session
-
+from flask_session import Session
 
 app = Flask(__name__)
 
@@ -17,3 +17,30 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/recruitment')
+def recruit():
+    return render_template('recruitment.html')
+
+@app.route('/recruitment/process', methods=['GET', 'POST'])
+def process():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        regnum = request.form['regnum']
+        phone = request.form['phone']
+        team = request.form['team']
+        sellingpoint = request.form['sellingpoint']
+        linkedin = request.form['linkedin']
+        github = request.form['github']
+        projectolink = request.form['projectolink']
+        resumelink = request.form['resumelink']
+        ques1 = request.form['ques1']
+        ques2 = request.form['ques2']
+        ques3 = request.form['ques3']
+
+@app.route('/recruitment/submission')
+def submission():
+    pass
+
+if __name__ == '__main__':
+    app.run(debug=True)
