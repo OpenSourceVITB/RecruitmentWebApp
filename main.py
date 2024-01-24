@@ -9,9 +9,17 @@
 
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_session import Session
+from pymongo import MongoClient
+import os
+from prototype import UserData
 
 app = Flask(__name__)
 
+# Initialize MongoDB
+MONGO_URI: str= os.environ.get('MONGO_URI')
+wtf = MongoClient(MONGO_URI)
+db = wtf.xData
+recruit = db.recruit
 
 @app.route('/')
 def index():
@@ -37,6 +45,7 @@ def process():
         ques1 = request.form['ques1']
         ques2 = request.form['ques2']
         ques3 = request.form['ques3']
+        xd = UserData.updato(name, email, regnum, phone, team, sellingpoint, linkedin, github, projectolink, resumelink, ques1, ques2, ques3)
 
 @app.route('/recruitment/submission')
 def submission():

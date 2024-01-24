@@ -4,6 +4,8 @@
 
 # Why the heck am I even doing this?
 
+from main import recruit
+
 class UserData:
     name: str = None
     email: str = None
@@ -18,3 +20,23 @@ class UserData:
     ques1: str = None
     ques2: str = None
     ques3: str = None
+
+    @staticmethod
+    def updato(*args):
+        data = {
+            'name': args[0],
+            'email': args[1],
+            'regnum': args[2],
+            'phone': args[3],
+            'team': args[4],
+            'sellingpoint': args[5],
+            'linkedin': args[6],
+            'github': args[7],
+            'projectolink': args[8],
+            'resumelink': args[9],
+            'ques1': args[10],
+            'ques2': args[11],
+            'ques3': args[12]
+        }
+        recruit.insert_one(data)
+        return True
