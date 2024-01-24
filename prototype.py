@@ -38,5 +38,8 @@ class UserData:
             'ques2': args[11],
             'ques3': args[12]
         }
+        if recruit.find_one({'email': args[1]}):
+            recruit.update_one({'email': args[1]}, {'$set': data})
+            return 'Updated your response!'
         recruit.insert_one(data)
-        return True
+        return 'Submitted your response!'
