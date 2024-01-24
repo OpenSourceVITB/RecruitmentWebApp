@@ -11,15 +11,22 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_session import Session
 from pymongo import MongoClient
 import os
-from prototype import UserData
+from xDmongo import importo
+import re
 
 app = Flask(__name__)
+xdsecret: str= os.urandom(24).hex()
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SECRET_KEY'] = xdsecret 
+Session(app)
 
 # Initialize MongoDB
 MONGO_URI: str= os.environ.get('MONGO_URI')
 wtf = MongoClient(MONGO_URI)
 db = wtf.xData
 recruit = db.recruit
+
+from prototype import UserData
 
 @app.route('/')
 def index():
@@ -29,7 +36,7 @@ def index():
 def recruit():
     return render_template('recruitment.html')
 
-@app.route('/recruitment/process', methods=['GET', 'POST'])
+@app.route('/recruitment/process', methods=['GET','POST'])
 def process():
     if request.method == 'POST':
         name = request.form['name']
@@ -45,11 +52,31 @@ def process():
         ques1 = request.form['ques1']
         ques2 = request.form['ques2']
         ques3 = request.form['ques3']
-        xd = UserData.updato(name, email, regnum, phone, team, sellingpoint, linkedin, github, projectolink, resumelink, ques1, ques2, ques3)
+        status = 'Confirmed'
+        log = "Thanks for the initiative and yours' interest."
+        session.clear()
+        session['name'] = name
+        session['status'] = status
+        session['log'] = log
+        if not re.search(r'@vitbhopal\.ac\.in$', email):
+            session['status'] = 'Failed!'
+            session['log'] = 'Please enter a valid VIT Bhopal email address!'
+            return redirect(url_for('submission'))
+        if not re.search(r'^[0-9]{10}$', phone):
+            session['status'] = 'Failed!'
+            session['log'] = 'Please enter a valid phone number!'
+            return redirect(url_for('submission'))
+        status = UserData.updato(name, email, regnum, phone, team, sellingpoint, linkedin, github, projectolink, resumelink, ques1, ques2, ques3)
+        session['status'] = status
+        return redirect(url_for('submission'))
+    return render_template('form.html')
 
 @app.route('/recruitment/submission')
 def submission():
-    pass
-
+    name = session.get('name') or None
+    status = session.get('status') or None
+    log = session.get('log') or None
+    print(name, status, log)
+    return render_template('submission.html', name=name, status=status, log=log) if name else redirect(url_for('recruit'))
 if __name__ == '__main__':
     app.run(debug=True)
