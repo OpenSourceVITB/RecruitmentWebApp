@@ -92,6 +92,9 @@
         <h3 id="submissionMessage1"></h3> <br>
         <h3 id="submissionMessage2"></h3> <br>
         <h3 id="submissionMessage3"></h3> <br>
+        <h3 id="submissionMessage4"></h3> <br>
+        <h3 id="submissionMessage5"></h3> <br>
+        <h3 id="submissionMessage6"></h3> <br>
     </div>
 
     <script>
@@ -117,6 +120,9 @@
 		const h1Element1 = document.getElementById('submissionMessage1');
         const h3Element2 = document.getElementById('submissionMessage2');
         const h1Element3 = document.getElementById('submissionMessage3');
+        const h3Element4 = document.getElementById('submissionMessage4');
+        const h1Element5 = document.getElementById('submissionMessage5');
+        const h3Element6 = document.getElementById('submissionMessage6');
 
         setTimeout(function() {
             preloader.style.display = 'none';
@@ -126,6 +132,13 @@
                 typeWriter(h1Element1, 'echo GreetingsText', 95, function() {
 					h3Element2.innerHTML = 'Hello!';
 					h1Element3.innerHTML = '[Open-Source@Club ~]$ ';
+                    typeWriter(h1Element3, 'echo SubmissionStatus', 95, function() {
+						h3Element4.innerHTML = 'SubmissionStatus: {{ status }}';
+						h1Element5.innerHTML = '[Open-Source@Club ~]$ ';
+						typeWriter(h1Element5, 'echo LogMessage', 95, function() {
+							h3Element6.innerHTML = '{{ log }}';
+						});
+					});
                 });
             });
         }, 1000);

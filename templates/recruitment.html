@@ -21,7 +21,7 @@
         }
 
         .terminal {
-            display: none; /* Hide the terminal initially */
+            display: none;
             background-color: #444;
             color: #fff;
             padding: 20px;
@@ -33,33 +33,34 @@
             overflow-y: auto;
             position: relative;
         }
+
         .terminal-dot {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: rgb(255, 55, 55); /* Red by default */
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgb(255, 55, 55);
         }
 
         .terminal-dot.green {
-        position: absolute;
-        top: 10px;
-        right: 30px;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: rgb(86, 255, 86);
+            position: absolute;
+            top: 10px;
+            right: 30px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgb(86, 255, 86);
         }
 
-        
         h1, h3 {
             white-space: nowrap;
             margin: 0;
             display: inline;
             font-size: 1.2rem;
         }
+
         @media (max-width: 768px) {
             .terminal {
                 width: 97%;
@@ -68,12 +69,12 @@
                 margin-left: 5px;
                 margin-right: 5px;
             }
-            h1, h3{
-                font-size: .75rem;
+            h1, h3 {
+                font-size: 0.75rem;
             }
         }
 
-        h1{
+        h1 {
             padding-right: 2px;
         }
     </style>
@@ -94,7 +95,12 @@
         <h3 id="submissionMessage4"></h3> <br>
         <h3 id="submissionMessage5"></h3> <br>
         <h3 id="submissionMessage6"></h3> <br>
-        <h3 id="submissionMessage7"></h3>
+        <h3 id="submissionMessage7"></h3> <br>
+		<h3 id="submissionMessage8"></h3> <br>
+		<h3 id="submissionMessage9"></h3> <br>
+		<h3 id="submissionMessage10"></h3> <br>
+		<h3 id="submissionMessage11"></h3> <br>
+		<h3 id="submissionMessage12"></h3> <br>
     </div>
 
     <script>
@@ -106,7 +112,9 @@
                     i++;
                     setTimeout(type, speed);
                 } else {
-                    callback(); // Call the callback function when typing is complete
+                    if (callback) {
+                        callback();
+                    }
                 }
             }
             type();
@@ -121,36 +129,41 @@
         const h3Element4 = document.getElementById('submissionMessage4');
         const h3Element5 = document.getElementById('submissionMessage5');
         const h3Element6 = document.getElementById('submissionMessage6');
-        const h1Element7 = document.getElementById('submissionMessage7');
+		const h3Element7 = document.getElementById('submissionMessage7');
+		const h1Element8 = document.getElementById('submissionMessage8');
+		const h1Element9 = document.getElementById('submissionMessage9');
+		const h3Element10 = document.getElementById('submissionMessage10');
+		const h3Element11 = document.getElementById('submissionMessage11');
+		const h3Element12 = document.getElementById('submissionMessage12');
 
         setTimeout(function() {
-            preloader.style.display = 'none'; // Hide the preloader
-            terminal.style.display = 'block'; // Show the terminal
-            typeWriter(h1Element, 'git clone https://github.com/OpenSourceClub-VITB/Temp-Registration', 20, function() {
-                typeWriter(h3Element1, 'Cloning into \'Temp-Registration\'...', 15, function() {
-                    h3Element2.innerHTML = 'remote: ';
-                    typeWriter(h3Element2, 'Enumerating objects: 7, done.', 10, function() {
-                        h3Element4.innerHTML = 'remote: ';
-                        typeWriter(h3Element3, 'Counting objects: 100% (4/4), done.', 10, function() {
-                            h3Element5.innerHTML = 'remote: ';
-                            typeWriter(h3Element4, 'Compressing objects: 100% (3/3), done.', 10, function() {
-                                h3Element6.innerHTML = 'remote: ';
-                                typeWriter(h3Element5, 'Total 7 (delta 0), reused 0 (delta 0), pack-reused 0', 10, function() {
-                                    typeWriter(h3Element6, 'Receiving objects: 100% (4/4), 12.47 MiB | 109.00 MiB/s, done.', 10, function() {
-                                        h1Element7.innerHTML = '[Open-Source@Club ~]$ ';
-                                        typeWriter(h1Element7, 'cd Temp-Registration', 10, function() {
-                                        });
-                                    });
-                                });
-                            });
-                        });
-                    });
+            preloader.style.display = 'none';
+            terminal.style.display = 'block';
+            typeWriter(h1Element, 'git clone https://github.com/OpenSourceVITB/RecruitmentWebApp', 35, function() {
+                typeWriter(h3Element1, 'Cloning into \'RecruitmentWebApp\'...', 5, function() {
+                    h3Element2.innerHTML = 'remote: Enumerating objects: 18, done.';
+                    h3Element3.innerHTML = 'remote: Counting objects: 100% (18/18), done.';
+                    h3Element4.innerHTML = 'remote: Compressing objects: 100% (14/14), done.';
+                    h3Element5.innerHTML = 'remote: Total 18 (delta 2), reused 0 (delta 0), pack-reused 0';
+					h3Element6.innerHTML = 'Receiving objects: 100% (18/18), 20.27 KiB | 227.00 MiB/s, done.';
+					h3Element7.innerHTML = 'Resolving deltas: 100% (2/2), done.';
+                    h1Element8.innerHTML = '[Open-Source@Club ~]$ ';
+                    typeWriter(h1Element8, 'cd RecruitmentWebApp', 65, function() {
+						h1Element9.innerHTML = '[Open-Source@Club RecruitmentWebApp]$ ';
+						setTimeout(function() {
+							typeWriter(h1Element9, 'flask --app main run', 65, function() {
+								h3Element10.innerHTML = " * Serving Flask app 'main'";
+								h3Element11.innerHTML = " * Debug mode: off";
+								h3Element12.innerHTML = " * Running on http://opensourcevitb.org/recruitment (Press CTRL+SHIFT+T to quit)";
+							});
+						}, 1000);
+					});
                 });
             });
         }, 1000);
     setTimeout(function() {
-            window.location.href = "form.html"; // Redirect to index.html after preloading
-        }, 8000);
+            window.location.href = "recruitment/process";
+        }, 9500);
     </script>
 </body>
 </html>

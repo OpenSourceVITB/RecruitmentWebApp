@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/static/CSS/styles.css">
      
     
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -21,11 +21,11 @@
       name="hidden_iframe"
       id="hidden_iframe"
       style="display: none"
-      onload="if(submitted) {window.location='submission.html';}"
+      onload="if(submitted) {window.location='submission';}"
     ></iframe>
+    
     <div class="container">
         <header>Open Source Club Recruitment Form</header>
-
         <form action="#"
         method="post"
         target="hidden_iframe"
@@ -37,38 +37,39 @@
 
                     <div class="fields">
                         <div class="input-field">
-                            <label for="entry.1875145497">Full Name</label>
-                            <input type="text" placeholder="Enter your name" name="entry.1875145497" required>
+                            <label for="name">Full Name</label>
+                            <input type="text" placeholder="Enter your name" name="name" required>
                         </div>
 
                         <div class="input-field">
-                            <label for="entry.1701885730">VIT Email</label>
-                            <input type="text" placeholder="Enter your email" name="entry.1701885730" required>
+                            <label for="email">VIT Email</label>
+                            <input type="text" placeholder="Enter your email" name="email" required>
                         </div>
                         
                         <div class="input-field">
-                            <label for="entry.226176799">Registration no.</label>
-                            <input type="text" placeholder="Enter Registration no." name="entry.226176799" required>
+                            <label for="regnum">Registration no.</label>
+                            <input type="text" placeholder="Enter Registration no." name="regnum" required>
                         </div>
                         
                         <div class="input-field">
-                            <label for="entry.1951691030">Mobile Number</label>
-                            <input type="text" placeholder="Enter mobile number" name="entry.1951691030"  required>
+                            <label for="phone">Mobile Number (10 digits only without country code)</label>
+                            <input type="text" placeholder="Enter mobile number" name="phone"  required>
                         </div>
 
                         <div class="input-field">
-                            <label for="entry.1372231617">Team</label>
-                            <select name="entry.1372231617"  required>
+                            <label for="team">Team</label>
+                            <select name="team"  required>
                                 <option disabled selected>Select Option</option>
-                                <option>Social Media</option>
                                 <option>App Development</option>
-                                <option>PR & Outreach</option>
-                                <option>Designing Team</option>
-                                <option>Machine Learning</option>
                                 <option>Content Writing</option>
-                                <option>Web Development</option>
-                                <option>Photography Team</option>
+								<option>Cyber Security</option>
+                                <option>Designing Team</option>
                                 <option>Event Management</option>
+                                <option>Machine Learning</option>
+                                <option>Photography Team</option>
+                                <option>PR & Outreach</option>
+                                <option>Social Media</option>
+                                <option>Web Development</option>
                             </select>
                         </div>
                     </div>
@@ -79,28 +80,28 @@
 
                     <div class="fields">
                         <div class="input-field">
-                            <label for="entry.1496265850">Why you feel you are fit for this role?</label>
-                            <input type="text" placeholder="Enter Your response" name="entry.1496265850" required>
+                            <label for="sellingpoint">Why you feel you are fit for this role?</label>
+                            <input type="text" placeholder="Enter Your response" name="sellingpoint" required>
                         </div>
 
                         <div class="input-field">
-                            <label for="entry.1038590822">LinkedIn ID:</label>
-                            <input type="text" placeholder="URL" name="entry.1038590822" required>
+                            <label for="linkedin">LinkedIn ID:</label>
+                            <input type="text" placeholder="URL" name="linkedin" required>
                         </div>
 
                         <div class="input-field">
-                            <label for="entry.2059175934">Github ID: (Compulsary for Tech Team)</label>
-                            <input type="text" placeholder="URL" name="entry.2059175934" required>
+                            <label for="github">Github ID: (Compulsary for Tech Team)</label>
+                            <input type="text" placeholder="URL" name="github" required>
                         </div>
 
                         <div class="input-field">
-                            <label for="entry.1015707641">Link of the Best Project you made</label>
-                            <input type="text" placeholder="URL" name="entry.1015707641" required>
+                            <label for="projectolink">Link of the Best Project you made</label>
+                            <input type="text" placeholder="URL" name="projectolink" required>
                         </div>
                         
                         <div class="input-field">
-                            <label for="entry.1010985963">Resume Link</label>
-                            <input type="text" placeholder="URL" name="entry.1010985963">
+                            <label for="resumelink">Resume Link</label>
+                            <input type="text" placeholder="URL" name="resumelink">
                         </div>
 
                     </div>
@@ -111,25 +112,33 @@
                     </button>
                 </div> 
             </div>
-
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div id="flash-messages" class="flash-messages">
+                        {% for message in messages %}
+                            <div class="flash-message">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
             <div class="form second">
                 <div class="details address">
                     <span class="title">General Questions</span>
 
                     <div class="fields">
                         <div class="input-field">
-                            <label for="entry.166140641">What specific skills or talents do you bring that could benefit the club?</label>
-                            <input type="text" placeholder="You response" name="entry.166140641" required>
+                            <label for="ques1">What specific skills or talents do you bring that could benefit the club?</label>
+                            <input type="text" placeholder="You response" name="ques1" required>
                         </div>
 
                         <div class="input-field">
-                            <label for="entry.898221713">Are you interested in taking on a leadership role within the club? If yes, please specify the role you are interested in.</label>
-                            <input type="text" placeholder="You response" name="entry.898221713" required>
+                            <label for="ques2">Are you interested in taking on a leadership role within the club? If yes, please specify the role you are interested in.</label>
+                            <input type="text" placeholder="You response" name="ques2" required>
                         </div>
 
                         <div class="input-field">
-                            <label for="entry.156424539">Do you have any suggestions or ideas for club activities or projects?</label>
-                            <input type="text" placeholder="You response" name="entry.156424539" required>
+                            <label for="ques3">Do you have any suggestions or ideas for club activities or projects?</label>
+                            <input type="text" placeholder="You response" name="ques3" required>
                         </div>
 
                     </div>
@@ -151,6 +160,6 @@
             </div>
         </form>
     </div>  
-    <script src="script.js"></script>
+    <script src="/static/JS/script.js"></script>
 </body>
 </html>
