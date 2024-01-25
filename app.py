@@ -13,11 +13,19 @@ from pymongo import MongoClient
 import os
 from xDmongo import importo
 import re
+import redis
 
 app = Flask(__name__)
 xdsecret: str= os.urandom(24).hex()
-app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SECRET_KEY'] = xdsecret 
+app.secret_key = xdsecret 
+app.config['SESSION_TYPE'] = 'redis'
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_USE_SIGNER'] = True
+app.config['SESSION_KEY_PREFIX'] = 'trasho_'
+rediso = os.environ.get('REDIS_URI')
+redisp = os.environ.get('REDIS_PASS')
+redisport = os.environ.get('REDIS_PORT')
+app.config['SESSION_REDIS'] = redis.Redis(host=rediso,port=redisport,password=redisp)
 Session(app)
 
 # Initialize MongoDB
@@ -78,5 +86,3 @@ def submission():
     log = session.get('log') or None
     print(name, status, log)
     return render_template('submission.html', name=name, status=status, log=log) if name else redirect(url_for('recruit'))
-if __name__ == '__main__':
-    app.run(debug=True)

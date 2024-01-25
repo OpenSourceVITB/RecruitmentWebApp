@@ -4,7 +4,7 @@
 
 # Why the heck am I even doing this?
 
-from main import recruit
+from app import recruit
 
 class UserData:
     name: str = None
