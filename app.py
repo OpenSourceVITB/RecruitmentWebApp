@@ -22,9 +22,9 @@ app.config['SESSION_TYPE'] = 'redis'
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
 app.config['SESSION_KEY_PREFIX'] = 'trasho_'
-rediso = os.environ.get('REDIS_URI')
-redisp = os.environ.get('REDIS_PASS')
-redisport = os.environ.get('REDIS_PORT')
+rediso: str= os.environ.get('REDIS_URI')
+redisp: str= os.environ.get('REDIS_PASS')
+redisport: int= os.environ.get('REDIS_PORT')
 app.config['SESSION_REDIS'] = redis.Redis(host=rediso,port=redisport,password=redisp)
 Session(app)
 
