@@ -151,10 +151,10 @@
                     typeWriter(h1Element8, 'cd RecruitmentWebApp', 65, function() {
 						h1Element9.innerHTML = '[Open-Source@Club RecruitmentWebApp]$ ';
 						setTimeout(function() {
-							typeWriter(h1Element9, 'flask --app main run', 65, function() {
-								h3Element10.innerHTML = " * Serving Flask app 'main'";
-								h3Element11.innerHTML = " * Debug mode: off";
-								h3Element12.innerHTML = " * Running on http://opensourcevitb.org/recruitment (Press CTRL+SHIFT+T to quit)";
+							typeWriter(h1Element9, 'gunicorn app:app', 65, function() {
+								h3Element10.innerHTML = "[6969] [INFO] Starting gunicorn 21.2.0";
+								h3Element11.innerHTML = "[6969] [INFO] Listening at: http://opensourcevitb.org (6969)";
+								h3Element12.innerHTML = "[6969] [INFO] Using worker: sync";
 							});
 						}, 1000);
 					});
@@ -162,7 +162,7 @@
             });
         }, 1000);
     setTimeout(function() {
-            window.location.href = "recruitment/process";
+            window.location.href = "recruitment/login";
         }, 9500);
     </script>
 </body>
